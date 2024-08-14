@@ -96,7 +96,7 @@ if [[ "$BUILD_DIR" = false ]]; then
 		# Copy from current branch to /trunk, excluding dotorg assets
 		# The --filter flag will allow the full .gitignore syntax to be used in .distignore
 		# The --delete flag will delete anything in destination that no longer exists in source
-		rsync -rc --filter="merge $GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE/" trunk/ --delete --delete-excluded
+		rsync -rc --filter="dir-merge,- $GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE/" trunk/ --delete --delete-excluded
 	else
 		echo "ℹ︎ Using .gitattributes"
 
