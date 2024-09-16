@@ -98,7 +98,9 @@ if [[ "$BUILD_DIR" = false ]]; then
 		# The --filter flag will allow the full .gitignore syntax to be used in .distignore
 		# The --delete flag will delete anything in destination that no longer exists in source
 		# rsync -rc --filter="dir-merge,- $GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE/" trunk/ --delete --delete-excluded
-		rsync -rcv --filter="dir-merge $GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE/" trunk/ --delete --delete-excluded --itemize-changes
+		sed 's/^/- /' "$GITHUB_WORKSPACE/.distignore" | sed 's/^- !/+ /' > tmp_rules && \
+		rsync -rc --filter="merge tmp_rules" "$GITHUB_WORKSPACE/" trunk/ --delete && \
+		rm tmp_rules
 	else
 		echo "ℹ︎ Using .gitattributes"
 
