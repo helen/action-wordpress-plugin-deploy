@@ -93,14 +93,11 @@ if [[ "$BUILD_DIR" = false ]]; then
 	echo "➤ Copying files..."
 	if [[ -e "$GITHUB_WORKSPACE/.distignore" ]]; then
 		echo "ℹ︎ Using .distignore"
-		rsync --version
 		# Copy from current branch to /trunk, excluding dotorg assets
 		# The --filter flag will allow the full .gitignore syntax to be used in .distignore
 		# The --delete flag will delete anything in destination that no longer exists in source
+		# The --itemize-changes flag will show the changes made to each file
 		rsync -rcv --filter="merge,- $GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE/" trunk/ --delete --itemize-changes
-		# sed 's/^!/+ /' "$GITHUB_WORKSPACE/.distignore" | sed 's/^[^+]/- /' > tmp_rules && \
-		# rsync -rcv --filter="merge tmp_rules" "$GITHUB_WORKSPACE/" trunk/ --delete --itemize-changes && \
-		# rm tmp_rules	
 	else
 		echo "ℹ︎ Using .gitattributes"
 
