@@ -99,7 +99,7 @@ if [[ "$BUILD_DIR" = false ]]; then
 		# The --delete flag will delete anything in destination that no longer exists in source
 		# rsync -rc --filter="dir-merge,- $GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE/" trunk/ --delete --delete-excluded
 		sed 's/^!/+ /' "$GITHUB_WORKSPACE/.distignore" | sed 's/^[^+]/- /' > tmp_rules && \
-		rsync -rcv --filter="merge tmp_rules" "$GITHUB_WORKSPACE/" trunk/ --delete --itemize-changes && \
+		rsync -rcv --filter="merge,- tmp_rules" "$GITHUB_WORKSPACE/" trunk/ --delete --itemize-changes && \
 		rm tmp_rules	
 	else
 		echo "ℹ︎ Using .gitattributes"
