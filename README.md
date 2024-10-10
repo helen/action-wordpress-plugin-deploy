@@ -77,6 +77,12 @@ Current set of example workflow files:
 
 * [Deploy on publishing a new release and attach a ZIP file to the release](examples/deploy-on-publishing-a-new-release-and-attach-a-zip-file-to-the-release.yml)
 * [Deploy on pushing a new tag](examples/deploy-on-pushing-a-new-tag.yml)
+
+**Note**: The following step is required to check out the repository for use during the workflow run:
+```
+- uses: actions/checkout@main
+```
+
 * [Deploy on pushing a new tag and create release with attached ZIP](examples/deploy-on-pushing-a-new-tag-and-create-release-with-attached-zip.yml)
 
 ## Contributing
