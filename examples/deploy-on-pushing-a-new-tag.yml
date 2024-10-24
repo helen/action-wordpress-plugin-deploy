@@ -13,6 +13,8 @@ jobs:
       run: |
         npm install
         npm run build
+    - name: Install SVN ( Subversion )
+      run: sudo apt-get install subversion
     - name: WordPress Plugin Deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
       env:
