@@ -80,7 +80,7 @@ Current set of example workflow files:
 
 **Note**: The following step is required to check out the repository for use during the workflow run:
 ```
-- uses: actions/checkout@main
+- uses: actions/checkout@v4
 ```
 
 * [Deploy on pushing a new tag and create release with attached ZIP](examples/deploy-on-pushing-a-new-tag-and-create-release-with-attached-zip.yml)
