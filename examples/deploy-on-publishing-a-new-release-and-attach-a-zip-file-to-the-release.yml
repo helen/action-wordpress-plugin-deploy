@@ -56,7 +56,9 @@ jobs:
         npm run build
 
     - name: Install SVN ( Subversion )
-      run: sudo apt-get install subversion
+      run: |
+        sudo apt-get update
+        sudo apt-get install subversion
 
     - name: WordPress Plugin Deploy
 
