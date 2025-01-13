@@ -140,7 +140,7 @@ if [[ "$BUILD_DIR" = false ]]; then
 		git config --global user.name "10upbot on GitHub"
 
 		# Ensure git archive will pick up any changed files in the directory try.
-		test $(git ls-files --deleted) && git rm $(git ls-files --deleted)
+		test "$(git ls-files --deleted)" && git rm "$(git ls-files --deleted)"
 		if [ -n "$(git status --porcelain --untracked-files=all)" ]; then
 			git add .
 			git commit -m "Include build step changes"
