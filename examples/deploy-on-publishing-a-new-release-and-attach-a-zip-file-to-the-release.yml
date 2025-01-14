@@ -55,11 +55,6 @@ jobs:
         npm install
         npm run build
 
-    - name: Install SVN ( Subversion )
-      run: |
-        sudo apt-get update
-        sudo apt-get install subversion
-
     - name: WordPress Plugin Deploy
 
       # You can add unique ids to specific steps if you want to reference their output later in the workflow.
