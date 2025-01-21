@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased] - TBD
 
-## [2.3.0] - 2025-01-15
+## [2.3.0] - 2025-01-21
 ### Added
 - Example workflow files to documentation (props [@jeffpaul](https://github.com/jeffpaul), [@AlecRust](https://github.com/AlecRust), [@helen](https://github.com/helen), [@peterwilsoncc](https://github.com/peterwilsoncc) via [#143](https://github.com/10up/action-wordpress-plugin-deploy/pull/143)).
 - Add comments to the example workflow file to help better explain what each step does (props [@tarecord](https://github.com/tarecord), [@jeffpaul](https://github.com/jeffpaul) via [#144](https://github.com/10up/action-wordpress-plugin-deploy/pull/144)).
