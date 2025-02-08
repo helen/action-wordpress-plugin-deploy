@@ -40,6 +40,14 @@ fi
 # Check if it's a dry-run first
 if $INPUT_DRY_RUN; then
   echo "ℹ︎ Dry run: No files will be committed to Subversion."
+  
+  if [[ -z "$SVN_USERNAME" ]]; then
+    echo "Warning: SVN_USERNAME is missing. The commit will fail if you attempt a real run."
+  fi
+
+  if [[ -z "$SVN_PASSWORD" ]]; then
+    echo "Warning: SVN_PASSWORD is missing. The commit will fail if you attempt a real run."
+  fi
 else
   # If it's not a dry-run, check for SVN credentials
   if [[ -z "$SVN_USERNAME" ]]; then
