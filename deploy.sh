@@ -36,18 +36,29 @@ fi
 # IMPORTANT: while secrets are encrypted and not viewable in the GitHub UI,
 # they are by necessity provided as plaintext in the context of the Action,
 # so do not echo or use debug mode unless you want your secrets exposed!
-if [[ -z "$SVN_USERNAME" ]]; then
-	echo "Set the SVN_USERNAME secret"
-	exit 1
-fi
 
-if [[ -z "$SVN_PASSWORD" ]]; then
-	echo "Set the SVN_PASSWORD secret"
-	exit 1
-fi
-
+# Check if it's a dry-run first
 if $INPUT_DRY_RUN; then
-	echo "ℹ︎ Dry run: No files will be committed to Subversion."
+  echo "ℹ︎ Dry run: No files will be committed to Subversion."
+  
+  if [[ -z "$SVN_USERNAME" ]]; then
+    echo "Warning: SVN_USERNAME is missing. The commit will fail if you attempt a real run."
+  fi
+
+  if [[ -z "$SVN_PASSWORD" ]]; then
+    echo "Warning: SVN_PASSWORD is missing. The commit will fail if you attempt a real run."
+  fi
+else
+  # If it's not a dry-run, check for SVN credentials
+  if [[ -z "$SVN_USERNAME" ]]; then
+    echo "Set the SVN_USERNAME secret"
+    exit 1
+  fi
+
+  if [[ -z "$SVN_PASSWORD" ]]; then
+    echo "Set the SVN_PASSWORD secret"
+    exit 1
+  fi
 fi
 
 # Allow some ENV variables to be customized
